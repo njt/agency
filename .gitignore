@@ -1,3 +1,12 @@
+# macOS metadata
+.DS_Store
+
+# Internal notes (belong in notknowing repo only)
+notes/
+
+# Private repo submodule (never public)
+agency-internal
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
