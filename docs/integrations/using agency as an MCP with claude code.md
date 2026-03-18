@@ -64,6 +64,17 @@ All error responses use a standard envelope:
 - `cause` — most likely reason
 - `fix` — exact command or action to resolve
 
+## How agents are composed
+
+You do not need to define agents before calling Agency. When you call `agency_assign` with a task description, Agency composes an agent on the fly:
+
+1. **Primitives** — Agency stores a library of reusable building blocks: role components (individual capabilities), desired outcomes (what success looks like), and trade-off configurations (e.g. speed vs thoroughness). During `agency init`, a starter set of over 3,000 primitives is downloaded and indexed.
+2. **Semantic matching** — Agency embeds your task description and searches the primitive library for the best-matching components using semantic similarity. No manual mapping or agent file is required.
+3. **Composition** — The selected role components, desired outcome, and trade-off configuration are assembled into an agent and rendered into a prompt. Identical compositions are cached, so repeated tasks reuse the same agent.
+4. **Return** — The rendered prompt is returned to you via the `agency_assign` response. You adopt it as your operating instructions and execute the task.
+
+The starter primitives cover a broad range of task types. If you have domain-specific needs, you can add custom primitives using `agency primitives --help`. Evaluations you submit via `agency_submit_evaluation` feed back into each primitive's quality score, improving future compositions over time.
+
 ## Tools
 
 ### `agency_assign`

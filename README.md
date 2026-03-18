@@ -26,6 +26,8 @@ The underlying model draws on [research into how high-performing R&D teams struc
 - **Agents** — compositions of role components + desired outcomes + trade-off configurations, matched to tasks by semantic similarity
 - **Evaluators** — specialised agents that grade task output against desired outcomes, building the performance data that drives evolution
 
+You do not need to define agents in advance. When you call `agency_assign` with a task description, Agency selects the best-matching primitives from its library and composes an agent automatically. The starter library (~3,000 primitives, installed during `agency init`) covers a broad range of task types. Evaluations you submit feed back into primitive quality scores, improving future compositions over time.
+
 ## Quick start
 
 ```bash
